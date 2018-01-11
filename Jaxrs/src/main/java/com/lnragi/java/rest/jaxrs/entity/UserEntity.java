@@ -1,14 +1,32 @@
 package com.lnragi.java.rest.jaxrs.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Laxminarsaiah Ragi
  *
  */
+
+@Entity
+@Table(name = "USER", schema = "TEST")
 public class UserEntity {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
 	private Integer id;
+
+	@Column(name = "FIRSTNAME")
 	private String firstName;
+
+	@Column(name = "LASTNAME")
 	private String lastName;
+
+	@Column(name = "PHONE")
 	private Integer phone;
 	private String email;
 
