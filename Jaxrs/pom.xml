@@ -20,6 +20,11 @@
 			<artifactId>jersey-server</artifactId>
 			<version>1.19.4</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.19.4</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
