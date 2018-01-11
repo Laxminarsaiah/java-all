@@ -3,6 +3,7 @@ package com.lnragi.java.rest.jaxrs.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 public class UserEntity {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 
@@ -32,6 +33,10 @@ public class UserEntity {
 	@Column(name = "EMAIL")
 	private String email;
 
+	public UserEntity() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public UserEntity(Integer id, String firstName, String lastName, Integer phone, String email) {
 		super();
 		this.id = id;

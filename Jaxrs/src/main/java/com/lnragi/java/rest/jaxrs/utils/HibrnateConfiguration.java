@@ -1,7 +1,6 @@
 package com.lnragi.java.rest.jaxrs.utils;
 
 import java.sql.SQLException;
-import java.util.Properties;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

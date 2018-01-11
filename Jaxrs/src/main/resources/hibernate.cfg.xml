@@ -24,7 +24,9 @@
 		<property name="hibernate.connection.password">
 			root
 		</property>
-
+		<property name="hibernate.show_sql">
+			true
+		</property>
 		<mapping class="com.lnragi.java.rest.jaxrs.entity.UserEntity" />
 	</session-factory>
 

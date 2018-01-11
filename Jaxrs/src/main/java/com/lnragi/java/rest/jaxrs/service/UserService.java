@@ -15,4 +15,8 @@ public interface UserService {
 	public List<UserEntity> findAll();
 
 	public UserEntity findById(Integer id);
+
+	public UserEntity updateUser(UserEntity id);
+
+	public void deleteUser(Integer id);
 }

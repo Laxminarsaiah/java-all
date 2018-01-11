@@ -5,39 +5,44 @@ package com.lnragi.java.rest.jaxrs.service;
 
 import java.util.List;
 
+import com.lnragi.java.rest.jaxrs.dao.UserDAOImpl;
+import com.lnragi.java.rest.jaxrs.dao.UserDao;
 import com.lnragi.java.rest.jaxrs.entity.UserEntity;
 
 /**
- * @author lnragi
+ * @author Laxminarsaiah Ragi
  *
  */
 public class UserServiceImpl implements UserService {
 
-	/* (non-Javadoc)
-	 * @see com.lnragi.java.rest.jaxrs.service.UserService#addUser(com.lnragi.java.rest.jaxrs.entity.UserEntity)
-	 */
 	@Override
 	public UserEntity addUser(UserEntity user) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDao userDao = new UserDAOImpl();
+		return userDao.addUser(user);
 	}
 
-	/* (non-Javadoc)
-	 * @see com.lnragi.java.rest.jaxrs.service.UserService#findAll()
-	 */
 	@Override
 	public List<UserEntity> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		UserDao userDao = new UserDAOImpl();
+		return userDao.findAll();
 	}
 
-	/* (non-Javadoc)
-	 * @see com.lnragi.java.rest.jaxrs.service.UserService#findById(java.lang.Integer)
-	 */
 	@Override
 	public UserEntity findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDao userDao = new UserDAOImpl();
+		return userDao.findById(id);
+	}
+
+	@Override
+	public UserEntity updateUser(UserEntity usr) {
+		UserDao userDao = new UserDAOImpl();
+		return userDao.updateUser(usr);
+	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		UserDao userDao = new UserDAOImpl();
+		userDao.deleteUser(id);
 	}
 
 }
