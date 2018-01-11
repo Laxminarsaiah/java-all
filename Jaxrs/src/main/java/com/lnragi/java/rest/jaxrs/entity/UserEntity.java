@@ -28,6 +28,8 @@ public class UserEntity {
 
 	@Column(name = "PHONE")
 	private Integer phone;
+
+	@Column(name = "EMAIL")
 	private String email;
 
 	
