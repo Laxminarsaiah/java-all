@@ -32,8 +32,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/save")
 	public Response addUser(UserEntity user) {
-		UserService userService = new UserServiceImpl();
-		return Optional.ofNullable(userService.addUser(user))
+		return Optional.ofNullable(new UserServiceImpl().addUser(user))
 				.map(usr -> Response.ok(usr).build()).get();
 	}
 
@@ -41,8 +40,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getall")
 	public Response getAllUsers() {
-		UserService userService = new UserServiceImpl();
-		return Optional.of(userService.findAll())
+		return Optional.of(new UserServiceImpl().findAll())
 				.map(usrList -> Response.ok(usrList).build()).get();
 	}
 
@@ -50,8 +48,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getbyid")
 	public Response getById(@QueryParam("id") Integer id) {
-		UserService userService = new UserServiceImpl();
-		return Optional.of(userService.findById(id))
+		return Optional.of(new UserServiceImpl().findById(id))
 				.map(usr -> Response.ok(usr).build()).get();
 	}
 
@@ -59,8 +56,7 @@ public class UserController {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	public Response findById(@PathParam("id") Integer id) {
-		UserService userService = new UserServiceImpl();
-		return Optional.of(userService.findById(id))
+		return Optional.of(new UserServiceImpl().findById(id))
 				.map(usr -> Response.ok(usr).build()).get();
 	}
 
@@ -68,9 +64,8 @@ public class UserController {
 	 * @PUT
 	 * 
 	 * @Path("/update") public Response updateUser(@QueryParam("user")
-	 * UserEntity user) { UserService userService = new UserServiceImpl();
-	 * Optional<UserEntity> u = Optional.of(userService.updateUser(user)); if
-	 * (!u.isPresent()) { throw new
+	 * UserEntity user) { Optional<UserEntity> u = Optional.of(new
+	 * UserServiceImpl().updateUser(user)); if (!u.isPresent()) { throw new
 	 * UserNotFoundException("Something went wrong while update"); } return
 	 * u.map(usr -> Response.status(200).entity(user).build()).get(); }
 	 */
@@ -79,8 +74,7 @@ public class UserController {
 	 * @DELETE
 	 * 
 	 * @Path("/delete") public Response deleteUser(@QueryParam("id") Integer id)
-	 * { UserService userService = new UserServiceImpl();
-	 * userService.deleteUser(id); return Response.ok().build(); }
+	 * { new UserServiceImpl().deleteUser(id); return Response.ok().build(); }
 	 */
 
 }
