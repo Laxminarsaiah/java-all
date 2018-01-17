@@ -4,10 +4,12 @@
 package com.lnragi.java.rest.jaxrs.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.lnragi.java.rest.jaxrs.dao.UserDAOImpl;
 import com.lnragi.java.rest.jaxrs.dao.UserDao;
 import com.lnragi.java.rest.jaxrs.entity.UserEntity;
+import com.lnragi.java.rest.jaxrs.exceptions.UserNotFoundException;
 
 /**
  * @author Laxminarsaiah Ragi
@@ -30,7 +32,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserEntity findById(Integer id) {
 		UserDao userDao = new UserDAOImpl();
-		return userDao.findById(id);
+		return Optional.ofNullable(userDao.findById(id)).orElseThrow(
+				() -> new UserNotFoundException(id));
 	}
 
 	@Override
