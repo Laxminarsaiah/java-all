@@ -33,11 +33,8 @@ public class UserController {
 	@Path("/save")
 	public Response addUser(UserEntity user) {
 		UserService userService = new UserServiceImpl();
-		Optional<UserEntity> u = Optional.ofNullable(userService.addUser(user));
-		if (!u.isPresent()) {
-			throw new RuntimeException("Something went wrong while saving.");
-		}
-		return u.map(usr -> Response.ok(usr).build()).get();
+		return Optional.ofNullable(userService.addUser(user))
+				.map(usr -> Response.ok(usr).build()).get();
 	}
 
 	@GET
@@ -45,7 +42,8 @@ public class UserController {
 	@Path("/getall")
 	public Response getAllUsers() {
 		UserService userService = new UserServiceImpl();
-		return Optional.of(userService.findAll()).map(usrList -> Response.ok(usrList).build()).get();
+		return Optional.of(userService.findAll())
+				.map(usrList -> Response.ok(usrList).build()).get();
 	}
 
 	@GET
@@ -53,11 +51,8 @@ public class UserController {
 	@Path("/getbyid")
 	public Response getById(@QueryParam("id") Integer id) {
 		UserService userService = new UserServiceImpl();
-		Optional<UserEntity> u = Optional.of(userService.findById(id));
-		if (!u.isPresent()) {
-			throw new UserNotFoundException("User not found with id : " + id);
-		}
-		return u.map(usr -> Response.ok(usr).build()).get();
+		return Optional.of(userService.findById(id))
+				.map(usr -> Response.ok(usr).build()).get();
 	}
 
 	@GET
@@ -65,30 +60,27 @@ public class UserController {
 	@Path("/{id}")
 	public Response findById(@PathParam("id") Integer id) {
 		UserService userService = new UserServiceImpl();
-		Optional<UserEntity> u = Optional.of(userService.findById(id));
-		if (!u.isPresent()) {
-			throw new UserNotFoundException("User not found with id : " + id);
-		}
-		return u.map(usr -> Response.ok(usr).build()).get();
+		return Optional.of(userService.findById(id))
+				.map(usr -> Response.ok(usr).build()).get();
 	}
 
-	/*@PUT
-	@Path("/update")
-	public Response updateUser(@QueryParam("user") UserEntity user) {
-		UserService userService = new UserServiceImpl();
-		Optional<UserEntity> u = Optional.of(userService.updateUser(user));
-		if (!u.isPresent()) {
-			throw new UserNotFoundException("Something went wrong while update");
-		}
-		return u.map(usr -> Response.status(200).entity(user).build()).get();
-	}*/
+	/*
+	 * @PUT
+	 * 
+	 * @Path("/update") public Response updateUser(@QueryParam("user")
+	 * UserEntity user) { UserService userService = new UserServiceImpl();
+	 * Optional<UserEntity> u = Optional.of(userService.updateUser(user)); if
+	 * (!u.isPresent()) { throw new
+	 * UserNotFoundException("Something went wrong while update"); } return
+	 * u.map(usr -> Response.status(200).entity(user).build()).get(); }
+	 */
 
-	/*@DELETE
-	@Path("/delete")
-	public Response deleteUser(@QueryParam("id") Integer id) {
-		UserService userService = new UserServiceImpl();
-		userService.deleteUser(id);
-		return Response.ok().build();
-	}*/
+	/*
+	 * @DELETE
+	 * 
+	 * @Path("/delete") public Response deleteUser(@QueryParam("id") Integer id)
+	 * { UserService userService = new UserServiceImpl();
+	 * userService.deleteUser(id); return Response.ok().build(); }
+	 */
 
 }
